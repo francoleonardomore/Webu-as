@@ -47,6 +47,14 @@
     .servicio p{margin:0;color:var(--suave);font-size:.94rem;min-height:48px}
     .precio{display:block;color:var(--rosa-oscuro);font-weight:800;margin-top:16px}
     .nota{text-align:center;color:var(--suave);font-size:.88rem;margin-top:20px}
+    .promos{background:linear-gradient(120deg,#f8e8ee,#fff8f5)}
+    .promo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:760px;margin:auto}
+    .promo{position:relative;background:white;padding:28px 24px;border:2px dashed #e8c5d1;border-radius:20px;text-align:center;box-shadow:var(--sombra)}
+    .promo .etiqueta{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--rosa-oscuro);color:white;font-size:.72rem;font-weight:800;letter-spacing:.12em;padding:5px 14px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+    .promo h3{font-family:Georgia,serif;font-size:1.45rem;margin:10px 0 2px}
+    .promo .para{color:var(--suave);font-size:.92rem;margin:0}
+    .promo .precio-promo{font-family:Georgia,serif;font-size:2.4rem;color:var(--rosa-oscuro);font-weight:700;margin:8px 0 16px}
+    .promo .boton{width:100%}
     .galeria{background:#fbf0f3}
     .fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .fotos img{width:100%;height:380px;object-fit:cover;border-radius:17px;box-shadow:var(--sombra)}
@@ -67,13 +75,15 @@
     @media(max-width:760px){
       .barra{padding:12px 0;align-items:flex-start;flex-direction:column;gap:10px}
       nav{width:100%;gap:16px;overflow-x:auto;padding-bottom:4px;font-size:.88rem}
-      nav .boton{padding:9px 14px;white-space:nowrap}
+      nav a{white-space:nowrap}
+      nav .boton{padding:9px 14px}
       .hero{padding:42px 0}
       .hero-grid,.reserva-grid{grid-template-columns:1fr}
       .hero-foto{height:380px;max-width:520px;width:100%;margin:auto}
       section{padding:55px 0}
       .servicios{grid-template-columns:1fr}
       .servicio p{min-height:0}
+      .promo-grid{grid-template-columns:1fr;gap:26px}
       .fotos{grid-template-columns:repeat(2,1fr);gap:10px}
       .fotos img{height:250px}
       .fotos img:last-child{grid-column:span 2;height:300px}
@@ -86,7 +96,7 @@
     <div class="contenedor barra">
       <a class="marca" href="#inicio" id="nombreMarca">Nails Studio</a>
       <nav aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#galeria">Galería</a><a href="#turnos">Turnos</a>
+        <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#promos">Promos</a><a href="#galeria">Galería</a><a href="#turnos">Turnos</a>
         <a class="boton" href="#turnos">Reservar turno</a>
       </nav>
     </div>
@@ -101,7 +111,7 @@
           <p>Diseños delicados, detalles que enamoran y un espacio pensado para que disfrutes tu momento.</p>
           <div class="acciones">
             <a class="boton" href="#turnos">💬 Reservar por WhatsApp</a>
-            <a class="boton secundario" href="#galeria">Ver diseños</a>
+            <a class="boton secundario" href="#promos">Ver promos</a>
           </div>
         </div>
         <div class="hero-foto">
@@ -123,6 +133,32 @@
           <article class="servicio"><div class="icono">💅</div><h3>Kapping / Esculpidas</h3><p>Refuerzo o extensión para el estilo que buscás.</p><span class="precio">Consultar precio</span></article>
         </div>
         <p class="nota">Consultá por diseños personalizados y nail art.</p>
+      </div>
+    </section>
+
+    <section class="promos" id="promos">
+      <div class="contenedor">
+        <div class="encabezado">
+          <div class="eyebrow">Promociones</div>
+          <h2>Promos para 2 personas</h2>
+          <p>Venite con una amiga, tu mamá o tu pareja y aprovechá nuestros combos.</p>
+        </div>
+        <div class="promo-grid">
+          <article class="promo">
+            <span class="etiqueta">Promo · 2 personas</span>
+            <h3>2 Semipermanentes</h3>
+            <p class="para">Para dos personas</p>
+            <div class="precio-promo">$16.000</div>
+            <a class="boton" id="promo1" href="#" target="_blank" rel="noopener">Quiero esta promo</a>
+          </article>
+          <article class="promo">
+            <span class="etiqueta">Promo · 2 personas</span>
+            <h3>2 Soft Gel</h3>
+            <p class="para">Para dos personas</p>
+            <div class="precio-promo">$25.000</div>
+            <a class="boton" id="promo2" href="#" target="_blank" rel="noopener">Quiero esta promo</a>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -160,7 +196,10 @@
           <label for="servicio">Servicio</label>
           <select id="servicio" name="servicio" required>
             <option value="">Elegí un servicio</option>
-            <option>Manicuría</option><option>Esmaltado semipermanente</option><option>Kapping</option><option>Esculpidas</option><option>Nail art</option><option>Otro / consultar</option>
+            <option>Manicuría</option><option>Esmaltado semipermanente</option><option>Kapping</option><option>Esculpidas</option><option>Nail art</option>
+            <option>Promo: 2 semipermanentes ($16.000, para 2 personas)</option>
+            <option>Promo: 2 soft gel ($25.000, para 2 personas)</option>
+            <option>Otro / consultar</option>
           </select>
           <label for="fecha">Fecha preferida</label>
           <input id="fecha" name="fecha" type="date">
@@ -217,6 +256,8 @@
     }
     configurarEnlace("whatsappDirecto", "Hola! Quisiera consultar por un turno.");
     configurarEnlace("whatsappFlotante", "Hola! Quisiera consultar por sus servicios y turnos.");
+    configurarEnlace("promo1", "Hola! Quisiera reservar la promo de 2 semipermanentes a $16.000 (para 2 personas).");
+    configurarEnlace("promo2", "Hola! Quisiera reservar la promo de 2 soft gel a $25.000 (para 2 personas).");
 
     document.getElementById("formTurno").addEventListener("submit", function(e) {
       e.preventDefault();
