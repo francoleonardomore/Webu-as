@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8e8ee">
+  <meta name="description" content="Manicuría y nail art. Consultá servicios y reservá tu turno por WhatsApp.">
+  <title>Nails Studio | Turnos</title>
+  <style>
+    :root{
+      --rosa:#c87591; --rosa-oscuro:#9f4e6b; --rosa-claro:#f8e8ee;
+      --crema:#fffaf8; --texto:#382b31; --suave:#786a70; --blanco:#fff;
+      --sombra:0 14px 40px rgba(112,62,82,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--crema);color:var(--texto);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .contenedor{width:min(1100px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,250,248,.94);backdrop-filter:blur(12px);border-bottom:1px solid #f0dce3}
+    .barra{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .marca{font-family:Georgia,serif;font-size:1.45rem;color:var(--rosa-oscuro);font-weight:bold}
+    nav{display:flex;align-items:center;gap:24px;font-size:.94rem}
+    nav a:hover{color:var(--rosa-oscuro)}
+    .boton{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--rosa);color:white;padding:13px 21px;border-radius:999px;font-weight:700;border:0;cursor:pointer;transition:.2s}
+    .boton:hover{background:var(--rosa-oscuro);transform:translateY(-2px)}
+    .boton.secundario{background:white;color:var(--rosa-oscuro);border:1px solid #e8c5d1}
+    .hero{padding:68px 0 58px;background:linear-gradient(120deg,#f8e8ee 0%,#fff8f5 62%,#f4dce5 100%);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px}
+    .eyebrow{color:var(--rosa-oscuro);font-size:.8rem;letter-spacing:.17em;text-transform:uppercase;font-weight:800}
+    h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:1.12}
+    h1{font-size:clamp(2.7rem,6vw,4.7rem);margin:14px 0 18px}
+    h1 span{color:var(--rosa-oscuro);font-style:italic}
+    .hero p{color:var(--suave);font-size:1.08rem;max-width:510px}
+    .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .hero-foto{height:430px;border-radius:48% 48% 18px 18px;overflow:hidden;box-shadow:var(--sombra);background:#efd5df}
+    .hero-foto img{width:100%;height:100%;object-fit:cover}
+    section{padding:76px 0}
+    .encabezado{text-align:center;max-width:650px;margin:0 auto 36px}
+    .encabezado h2{font-size:clamp(2rem,4vw,3rem);margin:9px 0 12px}
+    .encabezado p{color:var(--suave);margin:0}
+    .servicios{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .servicio{background:white;padding:25px;border:1px solid #f1e1e6;border-radius:18px;box-shadow:var(--sombra)}
+    .servicio .icono{font-size:1.7rem}
+    .servicio h3{margin:10px 0 5px;font-family:Georgia,serif;font-size:1.35rem}
+    .servicio p{margin:0;color:var(--suave);font-size:.94rem;min-height:48px}
+    .precio{display:block;color:var(--rosa-oscuro);font-weight:800;margin-top:16px}
+    .nota{text-align:center;color:var(--suave);font-size:.88rem;margin-top:20px}
+    .galeria{background:#fbf0f3}
+    .fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .fotos img{width:100%;height:290px;object-fit:cover;border-radius:17px;box-shadow:var(--sombra)}
+    .reserva-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+    .reserva-panel{background:var(--rosa-claro);padding:34px;border-radius:24px}
+    .reserva-panel h2{font-size:2.4rem;margin:8px 0 14px}
+    .reserva-panel p{color:var(--suave)}
+    .datos{display:grid;gap:13px;margin:22px 0;color:var(--suave)}
+    .formulario{background:white;padding:28px;border-radius:22px;box-shadow:var(--sombra);border:1px solid #f1e1e6}
+    label{display:block;font-weight:700;font-size:.9rem;margin:13px 0 6px}
+    input,select,textarea{width:100%;padding:13px;border:1px solid #e6d5dc;border-radius:11px;font:inherit;background:#fffdfd;color:var(--texto)}
+    input:focus,select:focus,textarea:focus{outline:2px solid #e7b8c9;border-color:var(--rosa)}
+    .formulario .boton{width:100%;margin-top:18px}
+    footer{background:#382b31;color:#fff;padding:28px 0;text-align:center}
+    footer p{margin:5px;color:#eadde2;font-size:.9rem}
+    .wa-flotante{position:fixed;right:18px;bottom:18px;z-index:20;background:#25D366;color:white;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.65rem;box-shadow:0 8px 25px #0003}
+    .wa-flotante:hover{transform:scale(1.06)}
+    @media(max-width:760px){
+      .barra{padding:12px 0;align-items:flex-start;flex-direction:column;gap:10px}
+      nav{width:100%;gap:16px;overflow-x:auto;padding-bottom:4px;font-size:.88rem}
+      nav .boton{padding:9px 14px;white-space:nowrap}
+      .hero{padding:42px 0}
+      .hero-grid,.reserva-grid{grid-template-columns:1fr}
+      .hero-foto{height:320px;max-width:520px;width:100%;margin:auto}
+      section{padding:55px 0}
+      .servicios{grid-template-columns:1fr}
+      .servicio p{min-height:0}
+      .fotos{grid-template-columns:repeat(2,1fr);gap:10px}
+      .fotos img{height:190px}
+      .fotos img:last-child{grid-column:span 2;height:220px}
+      .reserva-panel{padding:25px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="contenedor barra">
+      <a class="marca" href="#inicio" id="nombreMarca">Nails Studio</a>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#galeria">Galería</a><a href="#turnos">Turnos</a>
+        <a class="boton" href="#turnos">Reservar turno</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div>
+          <div class="eyebrow">Manicuría · Belleza · Nail art</div>
+          <h1>Un mimo para tus manos, <span>un estilo para vos.</span></h1>
+          <p>Diseños delicados, detalles que enamoran y un espacio pensado para que disfrutes tu momento.</p>
+          <div class="acciones">
+            <a class="boton" href="#turnos">💬 Reservar por WhatsApp</a>
+            <a class="boton secundario" href="#galeria">Ver diseños</a>
+          </div>
+        </div>
+        <div class="hero-foto">
+          <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=1000&q=85" alt="Manicura prolija con diseño de uñas">
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="contenedor">
+        <div class="encabezado">
+          <div class="eyebrow">Lo que hacemos</div>
+          <h2>Servicios y precios</h2>
+          <p>Elegí tu servicio y consultanos disponibilidad. Consultá por WhatsApp los precios actualizados.</p>
+        </div>
+        <div class="servicios" id="listaServicios">
+          <article class="servicio"><div class="icono">✨</div><h3>Manicuría</h3><p>Preparación y cuidado de uñas y cutículas.</p><span class="precio">Consultar precio</span></article>
+          <article class="servicio"><div class="icono">🌸</div><h3>Esmaltado semipermanente</h3><p>Color parejo y brillo para lucir tus manos.</p><span class="precio">Consultar precio</span></article>
+          <article class="servicio"><div class="icono">💅</div><h3>Kapping / Esculpidas</h3><p>Refuerzo o extensión para el estilo que buscás.</p><span class="precio">Consultar precio</span></article>
+        </div>
+        <p class="nota">Consultá por diseños personalizados y nail art.</p>
+      </div>
+    </section>
+
+    <section class="galeria" id="galeria">
+      <div class="contenedor">
+        <div class="encabezado">
+          <div class="eyebrow">Inspirate</div><h2>Algunos diseños</h2>
+          <p>Galería de inspiración. Podés reemplazar estas imágenes por tus propios trabajos.</p>
+        </div>
+        <div class="fotos">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85" alt="Diseño de uñas en tonos claros">
+          <img src="https://images.unsplash.com/photo-1632345031435-8ec3f1ae8a3d?auto=format&fit=crop&w=800&q=85" alt="Manicura decorada">
+          <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=800&q=85" alt="Uñas cuidadas y esmaltadas">
+        </div>
+      </div>
+    </section>
+
+    <section id="turnos">
+      <div class="contenedor reserva-grid">
+        <div class="reserva-panel">
+          <div class="eyebrow">Tu momento empieza acá</div>
+          <h2>Reservá tu turno</h2>
+          <p>Completá tus datos y se abrirá WhatsApp con un mensaje listo para enviar. La reserva queda confirmada cuando te respondamos.</p>
+          <div class="datos">
+            <div>📍 <span id="ubicacion">Ubicación a confirmar</span></div>
+            <div>🕒 <span id="horarios">Horarios a confirmar</span></div>
+            <div>📱 Atención y reservas por WhatsApp</div>
+          </div>
+          <a class="boton secundario" id="whatsappDirecto" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        </div>
+        <form class="formulario" id="formTurno">
+          <h3 style="font-family:Georgia,serif;font-size:1.5rem;margin:0">Solicitar un turno</h3>
+          <label for="cliente">Tu nombre</label>
+          <input id="cliente" name="cliente" type="text" placeholder="Cómo te llamás" required>
+          <label for="servicio">Servicio</label>
+          <select id="servicio" name="servicio" required>
+            <option value="">Elegí un servicio</option>
+            <option>Manicuría</option><option>Esmaltado semipermanente</option><option>Kapping</option><option>Esculpidas</option><option>Nail art</option><option>Otro / consultar</option>
+          </select>
+          <label for="fecha">Fecha preferida</label>
+          <input id="fecha" name="fecha" type="date">
+          <label for="hora">Horario preferido</label>
+          <select id="hora" name="hora">
+            <option value="">A convenir</option><option>Mañana</option><option>Mediodía</option><option>Tarde</option>
+          </select>
+          <label for="mensaje">Mensaje (opcional)</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Contanos qué diseño tenés en mente"></textarea>
+          <button class="boton" type="submit">Enviar solicitud por WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <strong id="nombrePie">Nails Studio</strong>
+      <p>Gracias por elegirnos ♡</p>
+      <p>© <span id="anio"></span> · Todos los derechos reservados</p>
+    </div>
+  </footer>
+  <a class="wa-flotante" id="whatsappFlotante" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">☏</a>
+
+  <script>
+    /*
+      PERSONALIZÁ ESTOS DATOS:
+      1. nombre: nombre real de tu emprendimiento.
+      2. whatsapp: código de país + área + número, solo números.
+         Argentina: 549 + código de área sin 0 + número sin 15.
+         Ejemplo ficticio: 5492611234567
+      3. ubicacion y horarios: completá tus datos reales.
+    */
+    const CONFIG = {
+      nombre: "Giuliana",
+      whatsapp: "5492616425626",
+      ubicacion: "San José, Guaymallén",
+      horarios: "Consultar disponibilidad por WhatsApp"
+    };
+
+    document.title = CONFIG.nombre + " | Turnos";
+    document.getElementById("nombreMarca").textContent = CONFIG.nombre;
+    document.getElementById("nombrePie").textContent = CONFIG.nombre;
+    document.getElementById("ubicacion").textContent = CONFIG.ubicacion;
+    document.getElementById("horarios").textContent = CONFIG.horarios;
+    document.getElementById("anio").textContent = new Date().getFullYear();
+
+    function enlaceWhatsApp(mensaje) {
+      const numeroValido = /^549\d{10}$/.test(CONFIG.whatsapp);
+      if (!numeroValido) {
+        alert("Primero tenés que configurar tu número de WhatsApp en el código HTML, en CONFIG.whatsapp.");
+        return null;
+      }
+      return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(mensaje);
+    }
+
+    function configurarEnlace(id, mensaje) {
+      const url = enlaceWhatsApp(mensaje);
+      const elemento = document.getElementById(id);
+      if (url) elemento.href = url;
+      else elemento.href = "#turnos";
+    }
+    configurarEnlace("whatsappDirecto", "Hola! Quisiera consultar por un turno.");
+    configurarEnlace("whatsappFlotante", "Hola! Quisiera consultar por sus servicios y turnos.");
+
+    document.getElementById("formTurno").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById("cliente").value.trim();
+      const servicio = document.getElementById("servicio").value;
+      const fecha = document.getElementById("fecha").value || "A convenir";
+      const hora = document.getElementById("hora").value || "A convenir";
+      const detalle = document.getElementById("mensaje").value.trim() || "Sin detalles adicionales";
+      const mensaje = `Hola! Soy ${nombre}. Quisiera solicitar un turno.\nServicio: ${servicio}\nFecha preferida: ${fecha}\nHorario: ${hora}\nMensaje: ${detalle}\n¿Me indican disponibilidad?`;
+      const url = enlaceWhatsApp(mensaje);
+      if (url) window.open(url, "_blank", "noopener");
+    });
+  </script>
+</body>
+</html>
